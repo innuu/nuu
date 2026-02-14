@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisnu Bayu Samudra | Portfolio</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">W<span>B</span>S</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="social-sidebar">
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fas fa-book"></i></a>
+    </div>
+
+    <section id="home" class="hero">
+        <div class="hero-content"data-aos="fade-up" data-aos-duration="1500" >
+            <h2 class="subtitle">Creative Developer</h2>
+            <h1 class="main-title">WISNU BAYU <br> <span>SAMUDRA</span></h1>
+            <p>Membangun pengalaman digital yang menggabungkan fungsionalitas dan estetika tingkat tinggi.</p>
+            <a href="#projects" class="btn-gold">Explore My Work</a>
+        </div>
+    </section>
+
+    <section id="about" class="content-section">
+        <h2 data-aos="fade-right">Tentang Saya</h2>
+        <div class="line" data-aos="zoom-in"></div>
+    </section>
+
+    <section id="projects" class="content-section darker">
+        <h2 data-aos="fade-left">Project Terkini</h2>
+        <div class="line" data-aos="zoom-in"></div>
+        <div id="project-list" class="project-grid"></div>
+
+    </section>
+
+    <section id="contact" class="content-section">
+        <h2 data-aos="fade-up">Hubungi Saya</h2>
+        <div class="line" data-aos="zoom-in"></div>
+
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Inisialisasi Animasi
+        AOS.init();
+
+        // Smooth Scroll Logic
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
