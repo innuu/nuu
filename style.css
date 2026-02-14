@@ -1,0 +1,214 @@
+:root {
+    --bg-main: #ffffff;
+    --primary: #4a90e2;
+    --title: #2c3e50;
+    --text-regular: #6b7c93;
+    --card-bg: #f1f4f8;
+    --divider: #e0e6ed;
+    --nav-bg: rgba(255, 255, 255, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-regular);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navbar Glassmorphism Light */
+.navbar {
+    position: fixed;
+    top: 0; width: 100%;
+    z-index: 1000;
+    background: var(--nav-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--divider);
+    padding: 15px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px; font-weight: 900;
+    text-decoration: none; color: var(--title);
+    letter-spacing: 1px;
+}
+
+.logo span { color: var(--primary); }
+
+.nav-links {
+    display: flex; list-style: none; gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none; color: var(--title);
+    font-size: 13px; font-weight: 600;
+    text-transform: uppercase; transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--primary); }
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex; align-items: center;
+    background: radial-gradient(circle at center, #f8f9fa 0%, #ffffff 100%);
+    text-align: center;
+}
+
+.hero-content { width: 100%; }
+
+.subtitle {
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 12px;
+    display: block; margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.hero h1 {
+    color: var(--title);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900; line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.typing-text {
+    color: var(--primary);
+    border-right: 3px solid var(--primary);
+    padding-right: 8px;
+}
+
+.hero p {
+    color: var(--text-regular);
+    max-width: 650px; margin: 0 auto 40px;
+    font-size: 18px;
+}
+
+.hero-btns {
+    display: flex; justify-content: center; gap: 15px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 14px 30px; border-radius: 5px;
+    text-decoration: none; font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: var(--primary); color: white;
+}
+
+.btn-secondary {
+    border: 2px solid var(--primary); color: var(--primary);
+}
+
+.btn-primary:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 10px 20px rgba(74, 144, 226, 0.3); 
+}
+
+/* Sections */
+section { padding: 100px 0; }
+
+.section-title {
+    font-size: 2.5rem; text-align: center;
+    margin-bottom: 50px; color: var(--title);
+}
+
+/* Skills Badges */
+.skills-grid {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; gap: 12px;
+}
+
+.badge {
+    padding: 10px 25px; background: var(--card-bg);
+    border: 1px solid var(--divider); border-radius: 50px;
+    font-weight: 600; color: var(--title); transition: 0.3s;
+}
+
+.badge:hover { 
+    background: var(--primary); 
+    color: white; 
+    border-color: var(--primary);
+}
+
+/* Project Grid */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--card-bg); 
+    border: 1px solid var(--divider);
+    border-radius: 12px; padding: 25px;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+}
+
+.card-img {
+    height: 180px; background: #dee2e6;
+    border-radius: 8px; margin-bottom: 20px;
+}
+
+.tag {
+    color: var(--primary); font-size: 11px;
+    font-weight: 900; text-transform: uppercase;
+}
+
+.card h3 { color: var(--title); margin: 10px 0; font-size: 22px; }
+.card p { color: var(--text-regular); font-size: 14px; }
+
+/* Divider */
+.divider {
+    height: 1px; width: 100%;
+    background: var(--divider);
+    margin: 20px 0;
+}
+
+/* Animation Classes */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 2.2rem; }
+}
