@@ -1,109 +1,125 @@
-<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Intersection Observer (Reveal on Scroll)
-    const observerOptions = {
-        threshold: 0.1
-    };
 
+    /* =========================
+       1. REVEAL ON SCROLL
+    ========================= */
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    document.querySelectorAll('.fade-up')
+        .forEach(el => observer.observe(el));
 
-    // 2. Typing Animation Logic
-    const professions = ["Fullstack Developer", "Software Engineer", "UI/UX Designer"];
+
+    /* =========================
+       2. TYPING ANIMATION
+    ========================= */
+    const professions = [
+        "Fullstack Developer",
+        "Software Engineer",
+        "UI/UX Designer"
+    ];
+
     let profIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
     const typingElement = document.querySelector('.typing-text');
 
     function typeEffect() {
+        if (!typingElement) return;
+
         const currentWord = professions[profIndex];
-        
+
         if (isDeleting) {
-            typingElement.textContent = currentWord.substring(0, charIndex - 1);
             charIndex--;
         } else {
-            typingElement.textContent = currentWord.substring(0, charIndex + 1);
             charIndex++;
         }
 
-        let speed = isDeleting ? 100 : 200;
+        typingElement.textContent =
+            currentWord.substring(0, charIndex);
+
+        let speed = isDeleting ? 90 : 160;
 
         if (!isDeleting && charIndex === currentWord.length) {
-            speed = 2000; // Jeda di akhir kata
+            speed = 1800;
             isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
+        } 
+        else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             profIndex = (profIndex + 1) % professions.length;
-            speed = 500;
+            speed = 400;
         }
 
         setTimeout(typeEffect, speed);
     }
 
-    if (typingElement) typeEffect();
-=======
-// 1. DATA CENTER (Ubah/Tambah di sini saja!)
-const projectData = [
-    {
-        title: "E-Commerce Luxury",
-        desc: "Platform belanja barang mewah dengan integrasi payment gateway.",
-        tech: "React & Node.js"
-    },
-    {
-        title: "Company Profile",
-        desc: "Website instansi dengan animasi GSAP tingkat tinggi.",
-        tech: "HTML, CSS, JS"
-    },
-    {
-        title: "Mobile Banking UI",
-        desc: "Desain aplikasi perbankan modern dan minimalis.",
-        tech: "Figma & Flutter"
-    },
-    {
-        title: "AI Chatbot App",
-        desc: "Integrasi OpenAI untuk asisten pribadi pintar.",
-        tech: "Python & React"
-    }
-];
+    typeEffect();
 
-// 2. FUNGSI MERENDER DATA (Otomatis membuat elemen)
-function renderProjects() {
-    const list = document.getElementById('project-list');
-    
-    projectData.forEach((project, index) => {
-        const card = `
-            <div class="project-card" data-aos="fade-up" data-aos-delay="${index * 100}">
+
+    /* =========================
+       3. PROJECT AUTO RENDER
+       (VERSI LIGHT THEME)
+    ========================= */
+    const projectData = [
+        {
+            title: "E-Commerce Website",
+            desc: "Platform belanja online modern dengan UI responsif.",
+            tech: "HTML • CSS • JavaScript"
+        },
+        {
+            title: "Company Profile",
+            desc: "Website profil perusahaan dengan animasi modern.",
+            tech: "Frontend Development"
+        },
+        {
+            title: "Portfolio Website",
+            desc: "Website personal branding dengan typing animation.",
+            tech: "UI Design"
+        }
+    ];
+
+    const projectList = document.getElementById('project-list');
+
+    if (projectList) {
+        projectData.forEach(project => {
+
+            const card = document.createElement('div');
+            card.className = 'card fade-up';
+
+            card.innerHTML = `
                 <span class="tag">${project.tech}</span>
                 <h3>${project.title}</h3>
                 <p>${project.desc}</p>
-                <a href="#" class="btn-gold" style="padding: 5px 15px; font-size: 12px;">View Detail</a>
-            </div>
-        `;
-        list.innerHTML += card;
-    });
-}
+            `;
 
-// 3. JALANKAN SAAT HALAMAN DIBUKA
-document.addEventListener('DOMContentLoaded', () => {
-    AOS.init({ duration: 1000, once: true });
-    renderProjects();
-});
+            projectList.appendChild(card);
+            observer.observe(card);
+        });
+    }
 
-// 4. Smooth Scrolling untuk Navbar & Sidebar
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+
+    /* =========================
+       4. SMOOTH SCROLL NAVBAR
+    ========================= */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const target = document.querySelector(
+                this.getAttribute('href')
+            );
+
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
->>>>>>> c228b70ff4c6b34b2a07d4572c7c4cc399e29ce7
+
 });
