@@ -52,7 +52,9 @@ body {
     font-size: 24px; font-weight: 900;
     text-decoration: none; color: var(--title);
     letter-spacing: 1px;
+
 }
+
 
 .logo span { color: var(--primary); }
 
@@ -211,4 +213,26 @@ section { padding: 100px 0; }
 @media (max-width: 768px) {
     .nav-links { display: none; }
     .hero h1 { font-size: 2.2rem; }
+}
+/* ============================= */
+/* TAMBAHAN AGAR LOGO PAS NAVBAR */
+/* ============================= */
+
+/* memastikan logo sejajar vertikal */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+/* mengatur ukuran gambar logo */
+.logo img {
+    height: 45px;     /* ukuran ideal logo navbar */
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* opsional: biar navbar tidak ikut membesar karena img */
+.navbar img {
+    max-height: 45px;
 }
